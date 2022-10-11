@@ -15,7 +15,8 @@ public class ForegroundPlugin extends CordovaPlugin {
         if (android.os.Build.VERSION.SDK_INT >= 26) {
             Activity activity = cordova.getActivity();
             Intent intent = new Intent(activity, ForegroundService.class);
-
+            intent.addFlags(Intent.FLAG_IMMUTABLE);
+            
             if (action.equals("start")) {
                 // Tell the service we want to start it
                 intent.setAction("start");
